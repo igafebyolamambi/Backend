@@ -1,0 +1,39 @@
+{% extends 'layouts/app2.html' %}
+
+{% block content %}
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">History</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped data-table" style="width:100%;">
+            <thead>
+                <tr>
+                    <th style="width: 10px;">No</th>
+                    <th>Date</th>
+                    <th>Username</th>
+                    <th>Image</th>
+                    <th>Inceptionv3 prediction</th>
+                    <th>Inceptionv3 probability</th>
+                    <th>MobilenetV2 prediction</th>
+                    <th>MobilenetV2 probability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idx, row in df.iterrows() %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ row['created_at'] }}</td>
+                    <td>{{ row['username'] }}</td>
+                    <td><img style="width: 100px; height: 100px;" src="static/uploads/{{ row['image'] }}"></td>
+                    <td>{{ row['predict_inception'] }}</td>
+                    <td>{{ row['prob_inception'] }} %</td>
+                    <td>{{ row['predict_mobileNet'] }}</td>
+                    <td>{{ row['prob_mobileNet'] }} %</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
