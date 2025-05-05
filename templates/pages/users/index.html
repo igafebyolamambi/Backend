@@ -1,0 +1,49 @@
+{% extends 'layouts/app2.html' %}
+
+{% block content %}
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Daftar User</h3>
+            <div class="card-tools">
+                <a type="button" class="btn btn-primary btn-sm" href="/users/create">
+                    <i class="fa fa-plus"></i> Tambah Data User
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px;">No</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in users %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item['nama'] }}</td>
+                            <td>{{ item['username'] }}</td>
+                            <td>{{ item['roles'] }}</td>
+                            <td>
+                                {% if item['id'] != 1 %}
+                                <a class="btn btn-sm btn-warning" href="/users/{{ item['id'] }}/edit">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <a class="btn btn-sm btn-danger" href="/users/{{ item['id'] }}/delete" onclick="return confirm('Are you sure to delete?')">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock  %}
+
+{% block script %} {% endblock %}

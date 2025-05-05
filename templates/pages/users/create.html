@@ -1,0 +1,58 @@
+{% extends 'layouts/app2.html' %}
+
+{% block content %}
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Tambah Data</h3>
+            <div class="card-tools">
+                <a type="button" class="btn btn-info btn-sm" href="/users">
+                    <i class="fa fa-arrow-left"></i> Kembali
+                </a>
+            </div>
+        </div>
+        <form method="POST" action="/users/store">
+	        <div class="card-body">
+	        	<div class="form-group row">
+	        		<label class="col-md-3 col-form-label">Nama</label>
+	        		<div class="col-md-5">
+	        			<input type="text" class="form-control" placeholder="Nama" name="nama" required="">
+	        		</div>
+	        	</div>
+
+	        	<div class="form-group row">
+	        		<label class="col-md-3 col-form-label">Username</label>
+	        		<div class="col-md-5">
+	        			<input type="text" class="form-control" placeholder="Username" name="username" required="">
+	        		</div>
+	        	</div>
+
+	        	<div class="form-group row">
+	        		<label class="col-md-3 col-form-label">Password</label>
+	        		<div class="col-md-5">
+	        			<input type="password" class="form-control" placeholder="Password" name="password" required="">
+	        		</div>
+	        	</div>
+
+				<div class="form-group row">
+	        		<label class="col-md-3 col-form-label">Konfirmasi Password</label>
+	        		<div class="col-md-5">
+	        			<input type="password" class="form-control" placeholder="Konfirmasi Password" name="password1" required="">
+	        		</div>
+	        	</div>
+	        	
+	        	<div class="form-group row">
+	        		<label class="col-md-3 col-form-label">Roles</label>
+	        		<div class="col-md-5">
+	        			<select class="form-control" name="role">
+	        				<option value="admin">Admin</option>
+	        				<option value="user">User</option>
+	        			</select>
+	        		</div>
+	        	</div>
+	        </div>
+	        <div class="card-footer">
+	        	<button class="btn btn-primary">Submit</button>
+	        </div>
+        </form>
+    </div>
+{% endblock  %}
